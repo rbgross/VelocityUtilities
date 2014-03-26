@@ -21,6 +21,7 @@ public class ObjLoader {
 	 */
 	public static void objToAndroidBinary(String fileName) throws NumberFormatException, IOException {
 		BufferedReader buffer = new BufferedReader(new FileReader(fileName));
+		System.out.println("Processing: " + fileName);
 		String line;
 		
 		ArrayList<Float> tempVertices = new ArrayList<Float>();
@@ -119,7 +120,7 @@ public class ObjLoader {
         outElements.put(rawElements);
         outElements.position(0);
         
-        String outFileName = fileName.substring(0, fileName.length() - 4) + ".vmf";
+        String outFileName = "assets/output/" + fileName.substring(7, fileName.length() - 4) + ".vmf";
         FileOutputStream fos = new FileOutputStream(outFileName);
         FileChannel channel = fos.getChannel();
         channel.write(verticesCount);
