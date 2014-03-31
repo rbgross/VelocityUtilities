@@ -10,13 +10,13 @@ public class Main {
 		for (File child : dir.listFiles()) {
 			if (child.getName().endsWith(".obj")) {
 				try {
-					ObjLoader.objToAndroidBinary(child.getPath());
+					ObjLoader.objToAndroidBinary(child);
 				} catch (NumberFormatException | IOException e) {
 					System.out.println("An error occured");
 					e.printStackTrace();
 				}
 			}
 		}
-		
+		System.out.println("THAT'S ALL FOLKS");
 	}
 }

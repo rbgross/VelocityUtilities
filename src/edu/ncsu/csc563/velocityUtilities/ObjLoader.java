@@ -1,6 +1,7 @@
 package edu.ncsu.csc563.velocityUtilities;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,8 +20,9 @@ public class ObjLoader {
 	/**
 	 * Writes the .obj file to file with the format pos.x, pos.y, pos.z, nor.x, nor.y, nor.z
 	 */
-	public static void objToAndroidBinary(String fileName) throws NumberFormatException, IOException {
-		BufferedReader buffer = new BufferedReader(new FileReader(fileName));
+	public static void objToAndroidBinary(File file) throws NumberFormatException, IOException {
+		BufferedReader buffer = new BufferedReader(new FileReader(file.getPath()));
+		String fileName = file.getName();
 		System.out.println("Processing: " + fileName);
 		String line;
 		
@@ -120,7 +122,7 @@ public class ObjLoader {
         outElements.put(rawElements);
         outElements.position(0);
         
-        String outFileName = "assets/output/" + fileName.substring(7, fileName.length() - 4) + ".vmf";
+        String outFileName = "assets/output/" + fileName.substring(0, fileName.length() - 4) + ".vmf";
         FileOutputStream fos = new FileOutputStream(outFileName);
         FileChannel channel = fos.getChannel();
         channel.write(verticesCount);
