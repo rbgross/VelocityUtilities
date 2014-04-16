@@ -28,7 +28,7 @@ public class ObjLoader {
 		
 		ArrayList<Float> tempVertices = new ArrayList<Float>();
 		ArrayList<Float> tempNormals = new ArrayList<Float>();
-		//ArrayList<Float> tempTexCoords = new ArrayList<Float>();
+		ArrayList<Float> tempTexCoords = new ArrayList<Float>();
 		ArrayList<Float> vertices = new ArrayList<Float>();
 		ArrayList<Integer> elements = new ArrayList<Integer>();
 		
@@ -47,18 +47,11 @@ public class ObjLoader {
 				tempNormals.add(Float.parseFloat(parts.nextToken()));
 				tempNormals.add(Float.parseFloat(parts.nextToken()));
 				tempNormals.add(Float.parseFloat(parts.nextToken()));
-			} 
-			
-			/*
-			else if (token.equals("vt")) {
+			} else if (token.equals("vt")) {
 				tempTexCoords.add(Float.parseFloat(parts.nextToken()));
 				tempTexCoords.add(Float.parseFloat(parts.nextToken()));
 				tempTexCoords.add(Float.parseFloat(parts.nextToken()));
-				
-				lineScanner.close();
-				continue;
 			}
-			*/
 			
 			else if (token.equals("f")) {
 				for (int i = 0; i < 3; i++) {
@@ -72,12 +65,11 @@ public class ObjLoader {
 					vertices.add(tempVertices.get(vertexIndex + 0));
 					vertices.add(tempVertices.get(vertexIndex + 1));
 					vertices.add(tempVertices.get(vertexIndex + 2));
-					//vertices.add(tempTexCoords.get(texCoordIndex + 0));
-					//vertices.add(tempTexCoords.get(texCoordIndex + 1));
-					//vertices.add(tempTexCoords.get(texCoordIndex + 2));	
 					vertices.add(tempNormals.get(normalIndex + 0));
 					vertices.add(tempNormals.get(normalIndex + 1));
-					vertices.add(tempNormals.get(normalIndex + 2));				
+					vertices.add(tempNormals.get(normalIndex + 2));		
+					vertices.add(tempTexCoords.get(texCoordIndex + 0));
+					vertices.add(tempTexCoords.get(texCoordIndex + 1));
 					
 					elements.add(elements.size());
 					
